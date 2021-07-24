@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: mogam.in RSS summarize api
+  description: example
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /articles:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/article'
+              examples:
+                example:
+                  value:
+                    - url: 'http://note.com/mogamin3/n/12345'
+                      title: タイトルです
+                      body: |-
+                        本文のサマリです。本文のサマリです。本文のサマリです。
+                        本文のサマリです。本文のサマリです。
+                      created_at: '2019-08-24T14:15:22Z'
+                      media: note
+      operationId: get
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - note
+              - qiita
+              - blog
+              - zenn
+          in: query
+          name: media
+      description: 記事の一覧を作成日降順で返します
+    parameters: []
+components:
+  schemas:
+    media:
+      type: string
+      title: media
+      enum:
+        - note
+        - qiita
+        - blog
+        - zenn
+    article:
+      title: article
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        body:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        media:
+          $ref: '#/components/schemas/media'
+  responses: {}

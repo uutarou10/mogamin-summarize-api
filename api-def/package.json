@@ -1,0 +1,15 @@
+{
+  "name": "api-def",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "redoc-cli bundle ./def.yml -o ../dist/doc/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "redoc-cli": "^0.12.2"
+  }
+}
