@@ -1,7 +1,10 @@
 import express from 'express';
 import Parser from 'rss-parser';
+import cors from 'cors';
 
 export const app = express();
+
+app.use(cors());
 
 interface Article {
   url: string;
